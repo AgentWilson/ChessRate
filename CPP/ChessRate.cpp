@@ -11,6 +11,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <chrono>
 using namespace std;
 
 class Player
@@ -43,11 +44,15 @@ class Player
 		losses=loss;
 		date=time;
 	}
+	int getNumber()
+	{
+		return number;
+	}
 	string getName()
 	{
 		return lastname+", "+firstname;
 	}
-	int getScore()
+	int getRating()
 	{
 		return rating;
 	}
@@ -78,7 +83,7 @@ class Player
 	}
 	string toCSV()
 	{
-		string ret=to_string(number) + "," + firstname + "," + lastname + "," + to_string(rating);
+		string ret=to_string(number) + "," + firstname + "," + lastname + "," + to_string(rating) + "," + to_string(wins) + to_string(losses) + to_string(time);
 	}
 };
 class ChessRate
@@ -98,18 +103,22 @@ class ChessRate
 		}
 		while(inFile>>x)
 		{
-			// I Need to split a string
-			this.addPlayer(
-		}
+			// Need to split like this ( int number, string firstname, string lastname, int rating, int wins, int losses, long time )
+i
+			// I Need to split a string and make the numbers ints or longs
+			//this.addPlayer();
+		};
 	}
 	int addPlayer(string firstName,string lastName,int rating,long time)
 	{
-		// Add ME!!!
+		Player j = new Player(i,firstname,lastname,rating,time);
+		players.push_back(j);
 		return 0;
 	}
 	int addPlayer(string firstName,string lastName,long time)
 	{
-		// Add ME!
+		Player j = new Player(i,firstname,lastname,2500,time);
+		players.push_back(j);
 		return 0;
 	}
 	int addPlayer(string fistName,string lastName, int rating)
