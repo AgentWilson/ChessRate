@@ -104,7 +104,25 @@ class ChessRate
 		while(inFile>>x)
 		{
 			// Need to split like this ( int number, string firstname, string lastname, int rating, int wins, int losses, long time )
-i
+			int cpos[8] = {0,0,0,0,0,0,0,0};
+			cpos[8] = inFile.length();
+			int found = 0;
+			for ( n=0 ; n<7 ; ++n )
+			{
+				cpos[n+1] = inFile.find(',', found+1);
+				found = cpos[n];
+			}
+			int start = 0;
+			string subs[7];
+			for ( n=0 ; n<7 ; ++n)
+			{
+				subs[n] = inFile.substr(start + cpos[n-1], inFile.length() - cpos[n])
+			}
+			int number = std::stoi (subs[0],nullptr,10);
+			int rating = std::stoi (subs[3],nullptr,10);
+			int wins = std::stoi (subs[4],nullptr,10);
+			int losses = std::stoi (subs[5],nullptr,10);
+			long time = std::stol (subs[6],nullptr,10);
 			// I Need to split a string and make the numbers ints or longs
 			//this.addPlayer();
 		};
